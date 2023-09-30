@@ -1,25 +1,23 @@
-import logo from './logo.svg';
+import React, { useEffect } from "react";
+import { useState } from "react";
 import './App.css';
-
-function App() {
+ function App() {
+  const [toogle, setToogle] = useState(false);
+   const clickHandler = () => {
+    setToogle(!toogle);
+   };
+  useEffect(() => {
+    document.title = toogle ? `Using the useEffect hook` : `Welcome to Learning World`;
+  }, [toogle]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+   
+    <div >
+      <h1>Using the useEffect hook</h1>
+      <button onClick={clickHandler}>Message</button>
+      {toogle && <h2> Welcome to Learning World</h2>}
+
     </div>
   );
-}
 
-export default App;
+}
+export default App; 
